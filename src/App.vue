@@ -1,30 +1,30 @@
 <template>
 
-  <calculadora></calculadora>
-  
-  
+  <Contador titulo="Estudiante" v-bind:inicio="4+2"/>
+  <Contador titulo= "Profesor" :inicio = "102"/>
+  <!-- <Calculadora/> -->
 </template>
 
+
 <script>
-
-import Calculadora from './components/Calculadora.vue'
-
+  import Contador from './components/Contador.vue' //Referencia del componente
+  //import Calculadora from './components/Calculadora.vue';
 export default {
   name: 'App',
   components: {
-    Calculadora
+  Contador,
+  
   }
 }
 </script>
 
-
 <style>
-#app {
+ #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  /* color: #2c3e50; */
   margin-top: 60px;
-}
+} 
 </style>
