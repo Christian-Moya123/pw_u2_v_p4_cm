@@ -1,13 +1,13 @@
 <template>
   
   
-  <CaracolaMagica />
+  <Juego1 />
 </template>
 
 
 <script>
 import CaracolaMagica from './components/CaracolaMagica.vue';
-
+import Juego1 from './components/Juego1.vue';
 import PokemonPage from './modules/components/pages/PokemonPage.vue';
 import Calculadora from './components/Calculadora.vue';
 
@@ -17,8 +17,8 @@ export default {
   name: 'App',
   components: {
     //Calculadora
-    CaracolaMagica
-    
+    //CaracolaMagica
+    Juego1
   }
 }
 </script>
