@@ -1,7 +1,8 @@
 <template>
   
   
-  <Juego1 />
+  <PokemonPage />
+  
 </template>
 
 
@@ -18,7 +19,9 @@ export default {
   components: {
     //Calculadora
     //CaracolaMagica
-    Juego1
+    //Juego1
+    PokemonPage,
+  
   }
 }
 </script>
@@ -29,7 +32,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50; 
+  
   margin-top: 60px;
 }
 </style>

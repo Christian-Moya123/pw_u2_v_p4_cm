@@ -1,6 +1,6 @@
 <template>
     <h1>Juego Pokemon</h1>
-    <PokemonImg />
+    <Pokemonimg :pokemonId= "59" :muestraPokemon="true"/>
     <PokemonOps />
 </template>
 
@@ -11,7 +11,7 @@ import PokemonOps from '../PokemonOps.vue'
 export default {
     components: {
         Pokemonimg,
-        PokemonOps
+        PokemonOps,
     }
 
 }

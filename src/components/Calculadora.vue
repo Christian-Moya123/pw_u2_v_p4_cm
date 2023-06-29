@@ -31,7 +31,7 @@
 </template>
 
 
-            <script>
+<script>
 export default {
   name: "Calculadora",
   data() {
