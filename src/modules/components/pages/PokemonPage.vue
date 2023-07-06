@@ -3,7 +3,7 @@
         <h1 v-if="!pokemonCorrecto">Espera por favor......</h1>
         <div v-if="pokemonCorrecto">
             <h1>Juego Pokémon</h1>
-            <Pokemonimg :pokemonId="pokemonCorrecto.id" :muestraPokemon="showPokemon" />
+            <PokemonImg :pokemonId="pokemonCorrecto.id" :muestraPokemon="showPokemon" />
             <PokemonOps :options="pokemonsArray" v-on:seleccionado="revisarSeleccion($event)" />
 
             <h1 v-if="showWin" class="win">¡GANASTE! Tu puntaje es: {{ puntos }}</h1>
@@ -15,10 +15,9 @@
 </template>
   
 <script>
-import Pokemonimg from "../Pokemonimg.vue";
+import PokemonImg from "../Pokemonimg.vue";
 import PokemonOps from "../PokemonOps.vue";
 import getPokemonFacade from "../helpers/clientePokemonApi";
-
 
 export default {
     data() {
@@ -27,76 +26,50 @@ export default {
             pokemonCorrecto: null,
             showPokemon: false,
             showWin: false,
-            showLose: false,
-            puntos: 0,
-            intentos: 0,
+            lose: false
         };
     },
     components: {
-        Pokemonimg,
+        PokemonImg,
         PokemonOps,
     },
 
+
     methods: {
         async loadStartGame() {
+            //llama al metodo interfaz del cliente, que devuelve un arreglo de 4 pokemon
             const arregloPokemons = await getPokemonFacade();
-            this.pokemonsArray = arregloPokemons;
-            const indicePokemon = Math.floor(Math.random() * 4);
-            this.pokemonCorrecto = this.pokemonsArray[indicePokemon];
+            console.log(arregloPokemons)
+            this.pokemonsArray = arregloPokemons
+            const indicePokemon = Math.floor(Math.random() * 4)
+            this.pokemonCorrecto = this.pokemonsArray[indicePokemon]
         },
 
         revisarSeleccion(idSeleccionado) {
-            this.showPokemon = true;
-            this.intentos++;
+            console.log('evento en el padre')
+            this.showPokemon = true
+            console.log(idSeleccionado)
 
-            if (idSeleccionado === this.pokemonCorrecto.id) {
-                this.showWin = true;
-                this.puntos = this.calcularPuntos();
-            } else {
-                if (this.intentos >= 3) {
-                    this.showLose = true;
-                }
-            }
-        },
+            this.showPokemon =
+                idSeleccionado == this.pokemonCorrecto.id ? true : false;
+            this.lose = !this.showPokemon;
 
-        calcularPuntos() {
-            if (this.intentos === 1) {
-                return 5;
-            } else if (this.intentos === 2) {
-                return 2;
-            } else if (this.intentos === 3) {
-                return 1;
-            }
-        },
-
-        reiniciarJuego() {
-            this.pokemonCorrecto = null;
-            this.showPokemon = false;
-            this.showWin = false;
-            this.showLose = false;
-            this.puntos = 0;
-            this.intentos = 0;
-            this.loadStartGame();
-        },
+        }
     },
-
     mounted() {
+        console.log("se monto el componente");
         this.loadStartGame();
     },
+
+
+
+
 };
 </script>
-
+  
 <style scoped>
 h1 {
     text-shadow: 0 0 1px blue;
 }
-
-
-.lose {
-    margin-top: 20px;
-}
-
-button {
-    margin-top: 20px;
-}
 </style>
+  
