@@ -1,52 +1,49 @@
 <template>
-    <h1>Opciones Pokemon</h1>
-
-    <div class="contenedor-opciones"> 
+  <div class="contenedor-opciones">
     <ul>
-
-     
-
-        <li v-for="pokemon in opciones" :key="pokemon.id">{{ pokemon.nombre }}</li>
-
+      <li v-for="pokemon in options" :key="pokemon.id" @click ="$emit('seleccionado', pokemon.id)">{{pokemon.name}} </li>
     </ul>
-    </div>
+  </div>
 </template>
   
 <script>
-export default {   
-    
-    props:{
-                Opciones:{
-                    type: Array,
-                    required: true
-                }
-    }
+export default {
+  props: {
+    options: {
+      type: Array,
+      required: true,
+    },
+  },
 
-}
+  methods: {
+    pruebaDeEvento() {
+      console.log('Prueba de evento')
+    }
+  }
+
+};
 </script>
   
 <style scoped>
+	ul {
+		list-style-type: none;
+	}
 
-ul{
-    list-style-type:none ;
-}
+	li {
+		border: 1px solid rgba(0, 0, 0, 0.2);
+		border-radius: 5px;
+		background-color: white;
+		margin-bottom: 5px;
+		width: 200px;
+		cursor: pointer;
+	}
 
-li{
-    border: 1px solid rgba(233,0,0,0.2);
-    border-radius:5px ;
-    background: white;
-    margin-bottom: 10px;
-    width: 200px;
-    cursor: pointer;
-}
+	li:hover {
+		background-color: rgb(224, 94, 94);
+	}
 
-li:hover{
-    background: aquamarine;
-}
-
-.contenedor-opciones{
-    display: flex;
-    justify-content: center;
-}
-
+	.contenedor-opciones {
+		display: flex;
+		justify-content: center;
+	}
 </style>

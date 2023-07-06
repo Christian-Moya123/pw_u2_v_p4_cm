@@ -1,167 +1,52 @@
-
-
-const obtenerPokemons=async()=>{
-
-    //retornar el array de pokemons
-
-    const vectorObj = await obtenerNombresPokemon(obtenerVectorNumerico())
-
-    console.log(vectorObj)
-
-
-
-
-    return vectorObj
-
+const getPokemons = async () => {
+    //Retornar el array de pokemons
+    const objArray = await getPokemonNames(getNumericArray());
+    console.log(objArray);
+    return objArray;
+};
+function getRandom(min, max) {
+    max++;
+    return Math.floor(Math.random() * (max - min) + min);
 }
-
-
-
-
-function getNumeroAleatorio(min, max){
-
-    max++
-
-    return Math.floor(Math.random()*(max-min)+min)
-
-}
-
-
-
-
-const obtenerVectorNumerico=()=>{
-
-
-
-
-    const vector =[getNumeroAleatorio(1,600)
-
-                    ,getNumeroAleatorio(1,600)
-
-                ,getNumeroAleatorio(1,600)
-
-            ,getNumeroAleatorio(1,600)]
-
-
-
-
-    return vector
-
-}
-
-
-
-
-const obtenerNombresPokemon= async ([id1,id2,id3,id4]=[])=>{ //desestructuramos el arreglo
-
-
-
-
-    const data1 = await consumirApi(id1)
-
-    const data2 = await consumirApi(id2)
-
-    const data3 = await consumirApi(id3)
-
-    const data4 = await consumirApi(id4)
-
-
-
-
-    console.log(data2.name)
-
-    console.log(data1.name)
-
-    console.log(data3.name)
-
-    console.log(data4.name)
-
-
-
-
+const getNumericArray = () => {
+    const array = [];
+    for (let i = 0; i < 4; i++) {
+        array.push(getRandom(1, 600));
+    }
+    return array;
+};
+const consumeAPI = async (id) => {
+    const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(
+        (r) => r.json()
+    );
+    return data;
+};
+const getPokemonNames = async ([id1, id2, id3, id4] = []) => {
+    const data1 = await consumeAPI(id1);
+    const data2 = await consumeAPI(id2);
+    const data3 = await consumeAPI(id3);
+    const data4 = await consumeAPI(id4);
     const obj1 = {
-
-        nombre:data1.name,
-
-        id:data1.id
-
-    }
-
-   
-
+        name: data1.name.replace(/^\w/, (c) => c.toUpperCase()),
+        id: data1.id,
+    };
     const obj2 = {
-
-        nombre:data2.name,
-
-        id:data2.id
-
-    }
-
-   
-
+        name: data2.name.replace(/^\w/, (c) => c.toUpperCase()),
+        id: data2.id,
+    };
     const obj3 = {
-
-        nombre:data3.name,
-
-        id:data3.id
-
-    }
-
-   
-
+        name: data3.name.replace(/^\w/, (c) => c.toUpperCase()),
+        id: data3.id,
+    };
     const obj4 = {
+        name: data4.name.replace(/^\w/, (c) => c.toUpperCase()),
+        id: data4.id,
+    };
 
-        nombre:data4.name,
-
-        id:data4.id
-
-    }
-
-
-
-
-    const vectorObjetos=([obj1,obj2,obj3,obj4]);
-
-
-
-
-        return vectorObjetos
-
-   
-
-}
-
-
-
-
-const consumirApi= async (id)=>{
-
-    const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`).then(result=>result.json())
-
-    console.log(data.name)
-
-    console.log(data.id)
-
-    return data
-
-}
-
-
-
-
-
-
-const obtenerFachadaPokemons=async()=>{
-
-
-
-
-    return await obtenerPokemons();
-
-}
-
-
-
-
-
-export default obtenerFachadaPokemons
+    return [obj1, obj2, obj3, obj4];
+};
+//Metodo fachada para consumir desde el componente
+const getPokemonFacade = async () => {
+    return await getPokemons();
+};
+export default getPokemonFacade;

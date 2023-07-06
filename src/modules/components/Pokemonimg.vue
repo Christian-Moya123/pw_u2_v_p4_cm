@@ -34,10 +34,10 @@ export default {
   filter: brightness(0);
 }
 
-img {   
+img {
   position: absolute;
   height: 200px;
-  right: 60%;
+  top: 100px;
 }
 
 .contenedor-imagen {
