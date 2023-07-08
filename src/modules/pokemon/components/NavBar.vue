@@ -1,9 +1,10 @@
 <template>
   <div>
     <router-link to="/">Bienvenida</router-link>
-    <router-link to="/juego">Juego Andry Birds</router-link>
-    <router-link to="/premios">Premios</router-link>
     <router-link to="/pokemonjuego">Pokemon Game</router-link>
+    <!-- <router-link to="/juego">Juego Andry Birds</router-link> -->
+    <router-link to="/premios">Premios</router-link>
+  
   </div>
 </template>
 
@@ -23,6 +24,7 @@ a, div{
     font-weight: bold;
     color: #6b0079;
     margin: 0 10px;
+    font-size: 30px;
 }
 
 </style>

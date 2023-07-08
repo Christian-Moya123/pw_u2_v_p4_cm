@@ -8,7 +8,7 @@
 			
 			<PokemonImg class="imagen" :pokemonId="pokemonCorrecto.id" :muestraPokemon="showPokemon" />
 			<PokemonOps v-show="!showResult" :options="pokemonsArray" v-on:seleccionado="revisarSeleccion($event)" />
-			<h3 v-if="wrongChoice && !showResult">Prueba otro!</h3>
+			<h3 v-if="showLose && !showResult">Prueba otro!</h3>
 		</div>
 
 		<div v-if="showResult">
@@ -43,8 +43,7 @@ export default {
 			showResult: false,
 			puntaje: 0,
 			intentos: 0,
-			wrongChoice: false,
-			pokemonImgStart: 'https://camo.githubusercontent.com/5d1fe59c3f0e4cfb5480bb8d8b1eb3ba58906acef846904fde8afcc5f773adbb/68747470733a2f2f692e696d6775722e636f6d2f583962314b75362e706e67',
+			showLose: false,
 		}
 	},
 	components: {
@@ -73,7 +72,7 @@ export default {
 				this.showResult = true
 				this.acumulacionPuntos()
 			} else {
-				this.wrongChoice = true
+				this.showLose = true
 			}
 			this.conteoIntentos()
 			this.showPokemon = true
@@ -109,7 +108,7 @@ export default {
 			this.puntaje = 0
 			this.intentos = 0
 			this.loadStartGame()
-			this.wrongChoice = false
+			this.showLose = false
 		},
 	},
 	mounted() {
