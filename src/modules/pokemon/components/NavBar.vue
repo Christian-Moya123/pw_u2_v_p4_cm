@@ -21,7 +21,7 @@ div{
 
 a, div{
     font-weight: bold;
-    color: #fff453;
+    color: #6b0079;
     margin: 0 10px;
 }
 

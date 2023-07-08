@@ -60,9 +60,9 @@
     align-self: center;
 		width: 200px;
 		height: 200px;
-		background-color: rgb(240, 240, 240);
+		
     border-radius: 10%;
-    box-shadow: 0 4px 8px 0px rgba(60, 166, 207, 1), 0 6px 20px 10px rgba(60, 166, 207, 1);
+   
 	}
 
   .cont{

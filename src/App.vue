@@ -20,8 +20,7 @@ export default {
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
   text-align: center;
   color: white;
   margin-top: 60px;
@@ -34,14 +33,14 @@ body {
 }
 
 html {
-  background: linear-gradient(90deg, rgb(36, 0, 0) 0%, rgb(194, 12, 12) 35%, rgb(255, 115, 0) 100%);
+  background: rgba(201, 46, 46, 0.705);
 }
 
 
 button {
-  border: 3px solid #385c91;
+  border: 3px solid #adff6a;
   border-radius: 5px;
-  background-color: #d9b53e;
+  background-color: #480aac;
   margin-bottom: 5px;
   cursor: pointer;
   padding: 3px;
@@ -50,6 +49,6 @@ button {
 }
 
 button:hover {
-  background-color: rgb(224, 94, 94);
+  background-color: rgb(255, 136, 0);
 }
 </style>
